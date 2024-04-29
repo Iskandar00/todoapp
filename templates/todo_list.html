@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div>
+    <a href="{% url 'todo_add-page' %}"><button>add_todo</button> </a>
+</div>
+<div>
+    {% for todo in todos %}
+    <h2>=======================================</h2>
+
+    <div>
+        {% for user in todo.users.all %}
+        <li>user: {{user.username}} </li>
+        {% endfor %}
+        <li> {{todo.categories}} </li>
+        <li> {{todo.title}} </li>
+        <li> {{todo.text}} </li>
+        <li> {{todo.done}} </li>
+        <li> {{todo.done_at}} </li>
+        <li> {{todo.start_date}} </li>
+        <li> {{todo.days}} </li>
+        <li> {{todo.created_at}} </li>
+    </div>
+    <a href="{% url 'detail-page' todo.id %}"><button class="btn btn-danger" type="submit">detail</button> </a>
+    <br>
+    {% endfor %}
+
+</div>
+
+
+</body>
+</html>
+

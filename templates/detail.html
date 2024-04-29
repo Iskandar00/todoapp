@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Delete</title>
+</head>
+<body>
+<form method="POST">
+
+    {% csrf_token %}
+    <div>
+        {% for user in object.users.all %}
+        <li>user: {{user.username}} </li>
+        {% endfor %}
+         <li>category:  {{object.categories}} </li>
+         <li>title:  {{object.title}} </li>
+         <li>text:  {{object.text}} </li>
+         <li>done:  {{object.done}} </li>
+         <li>done_at:  {{object.done_at}} </li>
+         <li>start_date:  {{object.start_date}} </li>
+         <li>days:  {{object.days}} </li>
+         <li>created_at:  {{object.created_at}} </li>
+    </div>
+</form>
+<a href="{% url 'todo-page' %}"><button>back</button></a>
+<a href="{% url 'update-page' todo.id %}"><button class="btn btn-success" type="submit">update</button></a>
+
+<a href="{% url 'delete-page' todo.id %}"><button class="btn btn-danger" type="submit">delete</button></a>
+
+</body>
+</html>
